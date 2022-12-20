@@ -4,6 +4,7 @@ import lk.ijse.dep9.app.dao.custom.ProjectDAO;
 import lk.ijse.dep9.app.entity.Project;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +17,8 @@ public class ProjectDAOImpl implements ProjectDAO {
 
     @Override
     public Project save(Project project) {
-        connection.prepareStatement("INSERT INTO User ()")
+        PreparedStatement stm = connection.prepareStatement("INSERT INTO User (username, full_name, password) ");
+        stm.setString(1,user.getUsername);
         return null;
     }
 
