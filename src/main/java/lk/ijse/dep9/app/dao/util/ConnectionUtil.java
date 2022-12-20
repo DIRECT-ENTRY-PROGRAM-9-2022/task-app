@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 public class ConnectionUtil {
     private static ThreadLocal<Connection> threadLocal = new ThreadLocal<>();
+
     public  static void setConnection(Connection connection){
         threadLocal.set(connection);
     }
