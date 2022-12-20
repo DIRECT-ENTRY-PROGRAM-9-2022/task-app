@@ -16,6 +16,7 @@ public class ProjectDAOImpl implements ProjectDAO {
 
     @Override
     public Project save(Project project) {
+        connection.prepareStatement("INSERT INTO User ()")
         return null;
     }
 
