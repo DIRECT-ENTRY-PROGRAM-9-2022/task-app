@@ -12,13 +12,13 @@ public class Task implements SuperEntity{
     private  int id;
     private String content;
     private Status status;
-    private Project projectId;
+    private int projectId;
 
 
-    public Task(String content, Status status, Project project) {
+    public Task(String content, Status status, int projectId) {
         this.content = content;
         this.status = status;
-        this.projectId = project;
+        this.projectId = projectId;
     }
 
     public static enum Status{
