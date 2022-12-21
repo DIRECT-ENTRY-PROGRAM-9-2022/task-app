@@ -1,7 +1,9 @@
 package lk.ijse.dep9.app.api;
 
 import lk.ijse.dep9.app.dto.UserDTO;
+import lk.ijse.dep9.app.util.ValidationGroups;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -12,7 +14,7 @@ import javax.validation.Valid;
 public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = "application/json")
-    public void createUserAccount(@Valid @RequestBody UserDTO user){
+    public void createUserAccount(@Validated(ValidationGroups.Create.class) @RequestBody UserDTO user){
 
     }
     @ResponseStatus(HttpStatus.NO_CONTENT)
