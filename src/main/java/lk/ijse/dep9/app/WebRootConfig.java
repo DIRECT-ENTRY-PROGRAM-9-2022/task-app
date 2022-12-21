@@ -1,11 +1,16 @@
 package lk.ijse.dep9.app;
 
 
+import lombok.Data;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jndi.JndiObjectFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.context.annotation.RequestScope;
 
 import javax.sql.DataSource;
@@ -14,6 +19,7 @@ import java.sql.SQLException;
 
 
 @Configuration
+@EnableTransactionManagement
 public class WebRootConfig {
 
     @Bean
@@ -23,11 +29,18 @@ public class WebRootConfig {
         jndi.setExpectedType(DataSource.class);
         return jndi;
     }
-
-    @Bean(destroyMethod = "close")
+    @Bean
+    public JdbcTemplate jdbcTemplate(DataSource ds){
+        return new JdbcTemplate(ds);
+    }
+    @Bean
     @RequestScope
-    public Connection connection(DataSource dataSource) throws SQLException {
-        return dataSource.getConnection();
+    public Connection connection(DataSource ds) throws SQLException {
+        return DataSourceUtils.getConnection(ds);
+    }
+    @Bean
+    public DataSourceTransactionManager transactionManager(DataSource ds){
+       return new DataSourceTransactionManager(ds);
     }
     @Bean
     public ModelMapper modelMapper(){
