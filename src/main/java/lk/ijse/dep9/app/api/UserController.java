@@ -15,8 +15,10 @@ public class UserController {
     public void createUserAccount(@Valid @RequestBody UserDTO user){
 
     }
-    @PatchMapping("/me")
-    public void updateUserAccountDetails(){
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PatchMapping(value = "/me",consumes = "application/json")
+    public void updateUserAccountDetails(@RequestBody@Valid UserDTO user){
+        System.out.println(user);
 
     }
     @GetMapping("/me")
