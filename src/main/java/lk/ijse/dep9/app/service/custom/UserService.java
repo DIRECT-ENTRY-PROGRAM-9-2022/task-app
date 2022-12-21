@@ -5,6 +5,5 @@ import lk.ijse.dep9.app.service.SuperService;
 
 public interface UserService extends SuperService {
 
-    void createNewUserAccount(UserDTO userDTO){
-    }
+    void createNewUserAccount(UserDTO userDTO);
 }
