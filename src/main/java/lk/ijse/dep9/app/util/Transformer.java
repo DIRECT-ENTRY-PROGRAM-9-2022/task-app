@@ -5,7 +5,6 @@ import lk.ijse.dep9.app.dto.UserDTO;
 import lk.ijse.dep9.app.entity.Project;
 import lk.ijse.dep9.app.entity.User;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -20,14 +19,14 @@ public class Transformer {
         return mapper.map(dto, User.class);
     }
 
-    public UserDTO touserDTO(User user){
+    public UserDTO toUserDTO(User user){
         return mapper.map(user, UserDTO.class);
     }
 
     public Project toProject(ProjectDTO dto){
         return mapper.map(dto, Project.class);
     }
-    public ProjectDTO toprojectDTO(Project projectEntity){
+    public ProjectDTO toProjectDTO(Project projectEntity){
         return mapper.map(projectEntity, ProjectDTO.class);
     }
 }

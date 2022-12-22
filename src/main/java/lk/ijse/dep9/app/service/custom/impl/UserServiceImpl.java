@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO verifyUser(String username, String password) {
-        UserDTO user = userDAO.findById(username).map(transformer::touserDTO)
+        UserDTO user = userDAO.findById(username).map(transformer::toUserDTO)
                 .orElseThrow( AuthenticationException::new);
     if (DigestUtils.sha256Hex(password).equals(user.getPassword())){
         return user;
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO getUserAccountDetails(String username) {
-       return userDAO.findById(username).map(transformer::touserDTO).get();
+       return userDAO.findById(username).map(transformer::toUserDTO).get();
     }
 
     @Override
