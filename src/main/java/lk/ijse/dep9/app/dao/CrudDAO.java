@@ -10,7 +10,7 @@ public interface CrudDAO<T extends SuperEntity, ID extends Serializable>extends 
 
      T save(T t);
 
-     int update(T t);
+     void update(T t);
 
      void deleteById(ID pk);
 
