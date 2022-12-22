@@ -13,7 +13,7 @@ import java.util.Optional;
 public class UserDAOImpl implements UserDAO {
 
     private final JdbcTemplate jdbc;
-    private final RowMapper<User> userRowMapper = (rs, rowNum) -> new User(rs.getString("username"), rs.getString("password"), rs.getString("full_name"));
+    private final RowMapper<User> userRowMapper = (rs, rowNum) -> new User(rs.getString("full_name"), rs.getString("username"), rs.getString("password"));
 
     public UserDAOImpl(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
@@ -56,3 +56,4 @@ public class UserDAOImpl implements UserDAO {
         return findById(username).isPresent();
     }
 }
+

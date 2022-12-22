@@ -1,5 +1,6 @@
 package lk.ijse.dep9.app.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lk.ijse.dep9.app.util.ValidationGroups;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,6 +14,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties(value = "password", allowSetters = true)
 public class UserDTO implements Serializable {
     @NotBlank(message = "Full name can't be empty or null")
     @Pattern(regexp = "^[A-Za-z ]+$", message = "Invalid name")
